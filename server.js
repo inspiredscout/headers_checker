@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/headers', (req, res) => {
   console.log('Request Headers:', req.headers);
   res.json(req.headers);
 });
