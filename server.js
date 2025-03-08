@@ -11,7 +11,7 @@ app.get('/headers', (req, res) => {
   }
   const ua = uap(req.headers).withClientHints()
 
-  res.json(`${req.headers}\n${ua}`);
+  res.json(`${JSON.stringify(req.headers)}\n${JSON.stringify(ua)}`);
 });
 
 const port = process.env.PORT || 3000;
