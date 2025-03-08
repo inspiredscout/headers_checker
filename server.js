@@ -1,4 +1,5 @@
 const express = require('express');
+const uap = require('ua-parser-js');
 const app = express();
 
 app.get('/headers', (req, res) => {
@@ -8,8 +9,9 @@ app.get('/headers', (req, res) => {
   for (const [key, value] of Object.entries(req.headers)) {
     res.setHeader(key, value);
   }
+  const ua = uap(req.headers).withClientHints()
 
-  res.json(req.headers);
+  res.json(req.headers, ua);
 });
 
 const port = process.env.PORT || 3000;
