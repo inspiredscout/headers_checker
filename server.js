@@ -10,8 +10,10 @@ app.get('/headers', (req, res) => {
     res.setHeader(key, value);
   }
   const ua = uap(req.headers).withClientHints()
+  const uaNoSecs = uap(req.headers)
 
   res.json({
+    uaNoSecs: uaNoSecs,
     ua: ua,
     headers: req.headers
   });
